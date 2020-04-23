@@ -1,9 +1,10 @@
-from flask import Flask, g
+from flask import Flask
 from sqlalchemy import create_engine, MetaData
 from flask_sqlalchemy import SQLAlchemy
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
-import os
+import os, random, string
+from flask_httpauth import HTTPBasicAuth
 from flask_marshmallow import Marshmallow
 from flask_jwt_extended import JWTManager, jwt_required, create_access_token
 from flask_mail import Mail, Message
@@ -17,7 +18,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'vibes.db')
-app.config['JWT_SECRET_KEY'] = 'super-secret'
+secret_key = app.config['JWT_SECRET_KEY'] = ''.join(random.choice(string.ascii_uppercase+string.digits)for x in range(32))
 app.config['MAIL_SERVER'] = 'smtp.mailtrap.io'
 # app.config['MAIL_USERNAME'] = os.environ['MAIL_USERNAME']
 # app.config['MAIL_PASSWORD'] = os.environ['MAIL_PASSWORD']
@@ -33,4 +34,5 @@ ma = Marshmallow(app)
 jwt = JWTManager(app)
 mail = Mail(app)
 
+auth = HTTPBasicAuth()
 from vibesapp import routes, models

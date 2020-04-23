@@ -1,7 +1,7 @@
-from vibesapp import app, manager
+from vibesapp import app
 
 if __name__ == '__main__':
-   manager=  app.run()
+    app.run()
 
 # from flask import Flask, jsonify, request
 # from flask_sqlalchemy import SQLAlchemy

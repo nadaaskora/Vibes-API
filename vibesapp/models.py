@@ -4,7 +4,9 @@ from sqlalchemy.schema import FetchedValue
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.sqltypes import NullType
 from flask_sqlalchemy import SQLAlchemy
-from vibesapp import ma, db
+from itsdangerous import (TimedJSONWebSignatureSerializer as Serializer, BadSignature, SignatureExpired)
+from vibesapp import ma, db, secret_key
+from passlib.apps import custom_app_context as pwd_context
 
 
 # Assistant
@@ -20,6 +22,30 @@ class Assistant(db.Model):
     availability = db.Column(db.Boolean, server_default=db.FetchedValue())
     current_location = db.Column(db.Text)
     number_of_trips = db.Column(db.Integer, server_default=db.FetchedValue())
+
+    def hash_password(self, password):
+        self.password = pwd_context.encrypt(password)
+
+    def verify_password(self, password):
+        self.password = pwd_context.verify(password, self.password)
+
+    def generate_auth_token(self, expiration=600):
+        s = Serializer(secret_key, expires_in = expiration)
+        return s.dumps({'id': self.id })
+
+    @staticmethod
+    def verify_auth_token(token):
+        s = Serializer(secret_key)
+        try:
+            data = s.loads(token)
+        except SignatureExpired:
+            # Valid Token, but expired
+            return None
+        except BadSignature:
+            # Invalid Token
+            return None
+        assistant_id = data['id']
+        return assistant_id
 
 
 class AssistantSchema(ma.Schema):
