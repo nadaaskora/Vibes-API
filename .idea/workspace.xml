@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e7819b20-086d-491f-b8b0-256e657a8e6d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vibesapp/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/vibesapp/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vibesapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/vibesapp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vibesapp/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/vibesapp/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vibesapp/vibes.db" beforeDir="false" afterPath="$PROJECT_DIR$/vibesapp/vibes.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/models.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,8 +17,8 @@
       <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vibesapp/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="103" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="103" />
+            <state relative-caret-position="17">
+              <caret line="10" column="103" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="103" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
                 <marker date="1583786735199" expanded="true" signature="1273:1314" ph="..." />
@@ -35,8 +30,8 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vibesapp/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="59" selection-start-line="32" selection-start-column="59" selection-end-line="32" selection-end-column="59" />
+            <state relative-caret-position="255">
+              <caret line="150" column="81" lean-forward="true" selection-start-line="148" selection-start-column="1" selection-end-line="150" selection-end-column="81" />
               <folding>
                 <element signature="e#16#101#0" expanded="true" />
               </folding>
@@ -47,14 +42,40 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1173" />
+            <state relative-caret-position="221">
+              <caret line="117" lean-forward="true" selection-start-line="117" selection-end-line="117" />
+              <folding>
+                <element signature="e#16#101#0" expanded="true" />
+                <element signature="e#338#924#0" />
+                <element signature="e#964#1139#0" />
+                <element signature="e#968#1335#0" />
+                <element signature="e#1784#1825#0" />
+                <element signature="e#1863#2252#0" />
+                <element signature="e#2320#2428#0" />
+                <element signature="e#1794#2133#0" />
+                <element signature="e#2856#2921#0" />
+                <element signature="e#2168#2514#0" />
+                <element signature="e#3343#3424#0" />
+                <element signature="e#4010#4390#0" />
+                <element signature="e#5366#5435#0" />
+                <element signature="e#4428#4859#0" />
+                <element signature="e#5949#6042#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="modelss.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modelss.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1945" />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="routes.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vibesapp/routes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1062">
+            <state relative-caret-position="2397">
               <caret line="145" column="18" selection-start-line="145" selection-start-column="18" selection-end-line="145" selection-end-column="18" />
               <folding>
                 <element signature="e#0#44#0" expanded="true" />
@@ -108,6 +129,7 @@
         <option value="$PROJECT_DIR$/vibesapp/__init__.py" />
         <option value="$PROJECT_DIR$/vibesapp/models.py" />
         <option value="$PROJECT_DIR$/vibesapp/routes.py" />
+        <option value="$PROJECT_DIR$/models.py" />
       </list>
     </option>
   </component>
@@ -159,6 +181,12 @@
     </key>
   </component>
   <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="BashConfigurationType" />
+        <option value="PythonConfigurationType" />
+      </set>
+    </option>
     <option name="ruleStates">
       <list>
         <RuleState>
@@ -189,18 +217,19 @@
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17249602" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run Dashboard" order="8" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.3729373" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.30203444" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32838285" />
     </layout>
@@ -233,13 +262,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vibesapp/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="23" selection-start-line="7" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -545,7 +567,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vibesapp/routes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1062">
+        <state relative-caret-position="2397">
           <caret line="145" column="18" selection-start-line="145" selection-start-column="18" selection-end-line="145" selection-end-column="18" />
           <folding>
             <element signature="e#0#44#0" expanded="true" />
@@ -555,8 +577,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vibesapp/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="103" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="103" />
+        <state relative-caret-position="17">
+          <caret line="10" column="103" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="103" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
             <marker date="1583786735199" expanded="true" signature="1273:1314" ph="..." />
@@ -564,10 +586,15 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/modelss.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1945" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/vibesapp/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="59" selection-start-line="32" selection-start-column="59" selection-end-line="32" selection-end-column="59" />
+        <state relative-caret-position="255">
+          <caret line="150" column="81" lean-forward="true" selection-start-line="148" selection-start-column="1" selection-end-line="150" selection-end-column="81" />
           <folding>
             <element signature="e#16#101#0" expanded="true" />
           </folding>
@@ -576,7 +603,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1173" />
+        <state relative-caret-position="221">
+          <caret line="117" lean-forward="true" selection-start-line="117" selection-end-line="117" />
+          <folding>
+            <element signature="e#16#101#0" expanded="true" />
+            <element signature="e#338#924#0" />
+            <element signature="e#964#1139#0" />
+            <element signature="e#968#1335#0" />
+            <element signature="e#1784#1825#0" />
+            <element signature="e#1863#2252#0" />
+            <element signature="e#2320#2428#0" />
+            <element signature="e#1794#2133#0" />
+            <element signature="e#2856#2921#0" />
+            <element signature="e#2168#2514#0" />
+            <element signature="e#3343#3424#0" />
+            <element signature="e#4010#4390#0" />
+            <element signature="e#5366#5435#0" />
+            <element signature="e#4428#4859#0" />
+            <element signature="e#5949#6042#0" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>

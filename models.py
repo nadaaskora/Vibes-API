@@ -1,10 +1,12 @@
 # coding: utf-8
-from sqlalchemy import Boolean, Column, Float, ForeignKey, Integer, LargeBinary, String, Table, Text
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, LargeBinary, Table, Text
 from sqlalchemy.schema import FetchedValue
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.sqltypes import NullType
 from flask_sqlalchemy import SQLAlchemy
-
+from itsdangerous import (TimedJSONWebSignatureSerializer as Serializer, BadSignature, SignatureExpired)
+from vibesapp import ma, db, secret_key
+from passlib.apps import custom_app_context as pwd_context
 
 db = SQLAlchemy()
 
@@ -24,6 +26,12 @@ class Assistant(db.Model):
     number_of_trips = db.Column(db.Integer, server_default=db.FetchedValue())
 
 
+class AssistantSchema(ma.Schema):
+    class Meta:
+        fields = ('assistant_id', 'name', 'phone', 'region', 'photo', 'email', 'password',
+                  'availability', 'current_location', 'number_of_trips')
+
+
 class AssistantNationalId(db.Model):
     __tablename__ = 'assistant_national_id'
 
@@ -32,6 +40,11 @@ class AssistantNationalId(db.Model):
     assistant_id = db.Column(db.ForeignKey('assistant.assistant_id'))
 
     assistant = db.relationship('Assistant', primaryjoin='AssistantNationalId.assistant_id == Assistant.assistant_id', backref='assistant_national_ids')
+
+
+class AssistantNationalIdSchema(ma.Schema):
+    class Meta:
+        fields = ('id', 'photo', 'assistant_id', 'assistant')
 
 
 class Blind(db.Model):
@@ -46,6 +59,11 @@ class Blind(db.Model):
     number_of_trips = db.Column(db.Integer)
 
 
+class BlindSchema(ma.Schema):
+    class Meta:
+        fields = ('blind_id', 'name', 'phone', 'region', 'email', 'password', 'number_of_trips')
+
+
 class BlindNationalId(db.Model):
     __tablename__ = 'blind_national_id'
 
@@ -56,6 +74,11 @@ class BlindNationalId(db.Model):
     blind = db.relationship('Blind', primaryjoin='BlindNationalId.blind_id == Blind.blind_id', backref='blind_national_ids')
 
 
+class BlindNationalIdSchema(ma.Schema):
+    class Meta:
+        fields = ('id', 'photo', 'blind_id', 'blind')
+
+
 class CarLicence(db.Model):
     __tablename__ = 'car_licence'
 
@@ -64,6 +87,11 @@ class CarLicence(db.Model):
     assistant_id = db.Column(db.ForeignKey('assistant.assistant_id'))
 
     assistant = db.relationship('Assistant', primaryjoin='CarLicence.assistant_id == Assistant.assistant_id', backref='car_licences')
+
+
+class CarLicenceSchema(ma.Schema):
+    class Meta:
+        fields = ('licence_id', 'photo', 'assistant_id', 'assistant')
 
 
 class Request(db.Model):
@@ -78,15 +106,22 @@ class Request(db.Model):
     blind_id = db.Column(db.ForeignKey('blind.blind_id'))
     assistant_id = db.Column(db.ForeignKey('assistant.assistant_id'))
 
-    assistant = db.relationship('Assistant', primaryjoin='Request.assistant_id == Assistant.assistant_id', backref='requests')
+    assistant = db.relationship('Assistant', primaryjoin='Request.assistant_id == Assistant.assistant_id',
+                                backref='requests')
     blind = db.relationship('Blind', primaryjoin='Request.blind_id == Blind.blind_id', backref='requests')
 
 
-t_sqlite_sequence = db.Table(
-    'sqlite_sequence',
-    db.Column('name', db.NullType),
-    db.Column('seq', db.NullType)
-)
+class RequestSchema(ma.Schema):
+    class Meta:
+        fields = ('request_id', 'type_of_service', 'current_location', 'accepted', 'distenation_',
+                  'time_needed', 'blind_id', 'assistant_id', 'assistant', 'blind')
+
+# t_sqlite_sequence = db.Table(
+#     'sqlite_sequence',
+#     db.Column('name', db.NullType),
+#     db.Column('seq', db.NullType)
+# )
+#
 
 
 class Trip(db.Model):
@@ -113,6 +148,11 @@ class TrustedNationalId(db.Model):
     trusted = db.relationship('TrustedPerson', primaryjoin='TrustedNationalId.trusted_id == TrustedPerson.trusted_id', backref='trusted_national_ids')
 
 
+class TrustedNationalIdSchema(ma.Schema):
+    class Meta:
+        fields = ('id', 'photo', 'trusted_id', 'trusted')
+
+
 class TrustedPerson(db.Model):
     __tablename__ = 'trusted_person'
 
@@ -123,3 +163,33 @@ class TrustedPerson(db.Model):
     blind_id = db.Column(db.ForeignKey('blind.blind_id'), nullable=False)
 
     blind = db.relationship('Blind', primaryjoin='TrustedPerson.blind_id == Blind.blind_id', backref='trusted_people')
+
+
+class TrustedPersonSchema(ma.Schema):
+    class Meta:
+        fields = ('trusted_id', 'name', 'phone', 'relation', 'blind_id', 'blind')
+
+
+# Schemas
+assistant_schema = AssistantSchema()
+assistants_schema = AssistantSchema(many=True)
+
+assistant_national_id_Schema = AssistantNationalIdSchema()
+assistants_national_id_Schema = AssistantNationalIdSchema(many=True)
+
+blind_schema = BlindSchema()
+blinds_schema = BlindSchema(many=True)
+
+blind_national_id_schema = BlindNationalIdSchema()
+blinds_national_id_schema = BlindNationalIdSchema(many=True)
+
+car_licence_schema = CarLicenceSchema()
+cars_licence_schema = CarLicenceSchema(many=True)
+
+
+trusted_national_id_schema = TrustedNationalIdSchema()
+trusted_nationals_id_schema = TrustedNationalIdSchema(many=True)
+
+trusted_person_schema = TrustedPersonSchema()
+trusted_persons_Schema = TrustedPersonSchema(many=True)
+
